@@ -1,13 +1,11 @@
 #include <iostream>
-#include <rigtorp/MPMCQueue.h>
+#include <mpmc/mpmcqueue.hpp>
 #include <thread>
 
 int main(int argc, char *argv[]) {
   (void)argc, (void)argv;
 
-  using namespace rigtorp;
-
-  MPMCQueue<int> q(10);
+  mpmc::queue<int> q(10);
   auto t1 = std::thread([&] {
     int v;
     q.pop(v);
