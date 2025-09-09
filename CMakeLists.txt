@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(MPMCQueue VERSION 1.0 LANGUAGES CXX)
+project(mpmcqueue VERSION 1.0 LANGUAGES CXX)
 
 add_library(${PROJECT_NAME} INTERFACE)
 add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
@@ -21,14 +21,14 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 
 	find_package(Threads REQUIRED)
 
-	add_executable(MPMCQueueExample src/MPMCQueueExample.cpp)
-	target_link_libraries(MPMCQueueExample MPMCQueue Threads::Threads)
+	add_executable(mpmc_queue_example src/mpmc_queue_example.cpp)
+	target_link_libraries(mpmc_queue_example mpmcqueue Threads::Threads)
 
-	add_executable(MPMCQueueTest src/MPMCQueueTest.cpp)
-	target_link_libraries(MPMCQueueTest MPMCQueue Threads::Threads)
+	add_executable(mpmc_queue_test src/mpmc_queue_test.cpp)
+	target_link_libraries(mpmc_queue_test mpmcqueue Threads::Threads)
 
 	enable_testing()
-	add_test(MPMCQueueTest MPMCQueueTest)
+	add_test(mpmc_queue_test mpmc_queue_test)
 endif()
 
 # Install
